@@ -96,7 +96,7 @@
               $nr= mysqli_num_rows($query);
 
               if($nr==1){
-                echo '<script type="text/javascript"> window.location="../nuevoTicket/nuevoTicket.php";</script>';
+                echo '<script type="text/javascript"> window.location="ticket.php";</script>';
               }else{
                 echo '<div class="alert alert-danger">USUARIO O CONTRASEÑA INVALIDO</div>';
               }
