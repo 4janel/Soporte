@@ -47,7 +47,7 @@
                         $user = $_POST['id'];
                         $pass = $_POST['pass'];
                         if($user == "adminUVG" && $pass == "2022"){
-                            echo '<script type="text/javascript"> window.location="consulta.php";</script>';
+                            echo '<script type="text/javascript"> window.location="dashbord.php";</script>';
                         }else{
                             echo '<div class="alert alert-danger">USUARIO O CONTRASEÑA INVALIDO</div>';
                         }
