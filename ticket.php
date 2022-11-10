@@ -1,24 +1,25 @@
 <!-- PHP -->
 <?php
-            //Inicio de sesion 
-            $carnet=(isset($_POST['carnet']))?$_POST['carnet']:"";
-            $problema=(isset($_POST['problema']))?$_POST['problema']:"";
-            $descripcion=(isset($_POST['descripcion']))?$_POST['descripcion']:"";
-            $fecha=(isset($_POST['date']))?$_POST['date']:"";
-            $id=(isset($_POST['id']))?$_POST['id']:"";
+//VARIABLES PARA ENVIAR DATOS 
+$problema=(isset($_POST['problema']))?$_POST['problema']:"";
+$descripcion=(isset($_POST['descripcion']))?$_POST['descripcion']:"";
+$fecha=(isset($_POST['date']))?$_POST['date']:"";
+$id=(isset($_POST['id']))?$_POST['id']:"";
 
-            //VERIFICAR SI NO ESTAN VACIOS   
-            include ("conexion/conexion.php");
 
-            if (isset($_POST["abrir"])){
-              $sentencia= ("INSERT INTO ticket(Idticket, titulo, descripcion, creado, id_usuario) VALUES ('$carnet','$problema','$descripcion','$fecha', '$id')");
-              $query = mysqli_query($conectar, $sentencia);
-              echo '<div class="alert alert-success">REGISTRO INGRESADO</div>';
-            }
+//ENVIAR DATOS    
+include ("conexion/conexion.php");
 
-            if (isset($_POST["cerrar"])){
-                echo '<script type="text/javascript"> window.location="index.php";</script>';
-              }
+if (isset($_POST["abrir"])){
+  $sentencia= ("INSERT INTO ticket(titulo, descripcion, creado, id_usuario) VALUES ('$problema','$descripcion','$fecha', '$id')");
+  $query = mysqli_query($conectar, $sentencia);
+  echo '<div class="alert alert-success">REGISTRO INGRESADO</div>';
+}
+
+//CERRAR SESION  
+if (isset($_POST["cerrar"])){
+  echo '<script type="text/javascript"> window.location="index.php";</script>';
+}        
 ?>
 
 
@@ -42,10 +43,6 @@
       <form action="" method="POST">      
 
         <div class="form-group">
-          <label for="">No Ticket</label>
-          <input type="text" class="form-control" name="carnet" placeholder="Ingrese el numero de su ticket">
-        </div>
-        <div class="form-group">
           <label for="">Problema</label>
           <input type="text" class="form-control" name="problema" placeholder="Ingrese su problema">
         </div>
@@ -65,13 +62,12 @@
 
             
         <div class="form-group d-flex align-items-center">
-          <button class="btn btn-success mx-1" type="submit" name="abrir">Abrir Ticket</button>
-          <button class="btn btn-success mx-1">Consulta Ticket</button>
+          <center><button class="btn btn-success mx-1" type="submit" name="abrir">Abrir Ticket</button></center>
+          <center><button class="btn btn-danger mx-1" name="cerrar" type="submit">Cerrar sesión</button></center>
         </div>
+
       </form>
     </div>
-
-    <form action="" method="POST">
 
     <div class="col">
       <p class="lead">Problemas mas frecuentes</p>
@@ -89,16 +85,52 @@
           <small class="text-muted">Verificar si esta ingresando con sus correo institucional</small>
           <br>
           <br>
-          <center><button class="btn btn-danger mx-1" name="cerrar" type="submit">Cerrar sesión</button></center>
+
         </a>
       </div>
+
+      <form action="" method="POST">
+        <div class="form-group">
+          <div class="form-group">
+            <p class="lead">Consulta tus tickets</p>
+            <label for="">Carnet</label>
+            <input type="text" class="form-control" name="carnet" placeholder="Ingrese el numero de su carnet">
+            <br>
+            <center><button class="btn btn-info mx-1" name="ticket">Consultar Tickets</button></center>
+          </div>
+          <table class="table table-borderless datatable">
+                    <thead>
+                      <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Titulo</th>
+                        <th scope="col">Descripción</th>
+                        <th scope="col">Respuesta</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    <?php    //CONSULTA DE DATOS 
+                    $consulta=(isset($_POST['carnet']))?$_POST['carnet']:"";
+
+                    if (isset($_POST["ticket"])){
+                      $sentencia= ("SELECT Id,titulo,descripcion,respuesta  FROM usuario,ticket,informacion WHERE Id=$consulta and usuario.Id=ticket.id_usuario and  usuario.Id=informacion.usuario_id and ticket.Idticket=informacion.ID_ticket");
+                      $listaempleados = mysqli_query($conectar, $sentencia);
+                      foreach ($listaempleados as $registro){?>
+                        <tr class="bg-light">
+                            <td><?php echo $registro['Id']; ?></td>
+                            <td><?php echo $registro['titulo']; ?></td>  
+                            <td><?php echo $registro['descripcion']; ?></td> 
+                            <td><?php echo $registro['respuesta']; ?></td>
+                        </tr>
+                        <?php }; 
+                    }
+                    ?>
+                    </tbody>
+                  </table>
+        </div>
+      </form>
+
     </div>
   </div>
-  
-    </form>
-
-  
-  
 </div>
 </body>
 </html>
