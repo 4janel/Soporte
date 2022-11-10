@@ -10,7 +10,7 @@ $listaempleados = mysqli_query($conectar, $sentencia);
 <html lang="en">
 
 <head>
-   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0"&amp;gt;>
     <meta charset="utf-8">
 
   <title>Tickets UVG</title>
