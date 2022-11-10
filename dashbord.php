@@ -1,6 +1,5 @@
 <?php   
 //Inicio de sesion 
-$info=(isset($_POST['info']))?$_POST['info']:"";
 $estado=(isset($_REQUEST['estado']))?$_REQUEST['estado']:"";
 $categoria=(isset($_REQUEST['messi']))?$_REQUEST['messi']:"";
 $prioridad=(isset($_REQUEST['prioridad']))?$_REQUEST['prioridad']:"";
@@ -15,7 +14,7 @@ $sentencia= ("SELECT Id,nombre,apellido,correo,titulo,descripcion,creado,Idticke
 $listaempleados = mysqli_query($conectar, $sentencia);
 
 if (isset($_POST["enviar"])){
-  $sentencia= ("INSERT INTO informacion(Idinfo, nestado, categoria, prioridad, respuesta, ID_ticket, usuario_id) VALUES ('$info','$estado','$categoria','$prioridad', '$respuesta', '$ticket', '$carnet')");
+  $sentencia= ("INSERT INTO informacion(nestado, categoria, prioridad, respuesta, ID_ticket, usuario_id) VALUES ('$estado','$categoria','$prioridad', '$respuesta', '$ticket', '$carnet')");
   $query = mysqli_query($conectar, $sentencia);
   echo '<div class="alert alert-danger">REGISTRO INGRESADO</div>';
 }
@@ -132,12 +131,6 @@ if (isset($_POST["enviar"])){
 
               <!-- General Form Elements -->
               <form action="" method="POST" enctype="multipart/form-data">
-                <div class="row mb-3">
-                  <label for="inputText">No información</label>
-                  <div class="col-sm-10">
-                    <input type="text" name="info" id="info" class="form-control">
-                  </div>
-                </div>
 
                 <label for="inputText">Estado</label>
                 <select class="form-select" aria-label="Default select example" name="estado">
