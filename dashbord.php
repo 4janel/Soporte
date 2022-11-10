@@ -10,13 +10,13 @@ $listaempleados = mysqli_query($conectar, $sentencia);
 <html lang="en">
 
 <head>
-   <meta name="viewport" content="width=device-width, initial-scale=1.0"&amp;gt;>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
     <meta charset="utf-8">
 
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
   <title>Tickets UVG</title>
-  
-  <meta content="" name="description">
-  <meta content="" name="keywords">
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -43,6 +43,14 @@ $listaempleados = mysqli_query($conectar, $sentencia);
       <a href="index.html" class="logo d-flex align-items-center">
         <span class="d-none d-lg-block">Tickets UVG</span>
       </a>
+    </div>
+
+    <!-- Barra de busqueda -->
+    <div class="search-bar">
+      <form class="search-form d-flex align-items-center" method="POST" action="#">
+        <input type="text" name="query" placeholder="Buscar" title="Enter search keyword">
+        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+      </form>
     </div>
   </header>
 
