@@ -5,6 +5,8 @@ require './envioticket.php'; ?>
 <head>
   <meta charset="UTF-8">
   <title>Ticket</title>
+  <link href="https://res.cloudinary.com/webuvg/image/upload/f_auto,q_auto,w_164,c_scale,fl_lossy,dpr_2.63/f_auto,q_auto,fl_lossy,c_scale,w_200/v1641328051/WEB/Nosotros/Imagen%20Institucional/Logotipo%20UVG/Logo%20UVG%20Altiplano/logo-uvg.altiplano-cuadrado-verde.jpg" rel="icon">
+    <link href="https://res.cloudinary.com/webuvg/image/upload/f_auto,q_auto,w_164,c_scale,fl_lossy,dpr_2.63/f_auto,q_auto,fl_lossy,c_scale,w_200/v1641328051/WEB/Nosotros/Imagen%20Institucional/Logotipo%20UVG/Logo%20UVG%20Altiplano/logo-uvg.altiplano-cuadrado-verde.jpg" rel="apple-touch-icon">
   <link rel="stylesheet" href="../css/bootstrap.min.css">
   <link rel="stylesheet" href="../css/style.css">
   <script src="../js/jquery.js"></script>    
