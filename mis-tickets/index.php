@@ -101,7 +101,7 @@ require './envioticket.php'; ?>
         </a>
       </div>
 
-      <form action="" method="POST">
+      <form action=""  enctype="multipart/form-data" class="was-validated" method="POST">
         <div class="form">
           <div class="form-group">
             <h2 class="form_title title">Consulta tus tickets</h2>
