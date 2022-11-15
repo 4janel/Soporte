@@ -10,8 +10,7 @@ $carnet=(isset($_POST['carnet']))?$_POST['carnet']:"";
 
 
 include ("../../conexion/conexion.php");
-$sentencia= ("SELECT Id,nombre,apellido,correo,titulo,descripcion,creado,Idticket FROM usuario,ticket WHERE usuario.Id=ticket.id_usuario");
-$listatickets = mysqli_query($conectar, $sentencia);
+
 
 if (isset($_POST["enviar"])){
   $sentencia1=("SELECT respuesta FROM heroku_d69d189ad4903c0.informacion WHERE ID_ticket='$ticket' AND usuario_id='$carnet';");
