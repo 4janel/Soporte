@@ -10,10 +10,14 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>Tickets UVG</title>
+  <link href="https://res.cloudinary.com/webuvg/image/upload/f_auto,q_auto,w_164,c_scale,fl_lossy,dpr_2.63/f_auto,q_auto,fl_lossy,c_scale,w_200/v1641328051/WEB/Nosotros/Imagen%20Institucional/Logotipo%20UVG/Logo%20UVG%20Altiplano/logo-uvg.altiplano-cuadrado-verde.jpg" rel="icon">
+    <link href="https://res.cloudinary.com/webuvg/image/upload/f_auto,q_auto,w_164,c_scale,fl_lossy,dpr_2.63/f_auto,q_auto,fl_lossy,c_scale,w_200/v1641328051/WEB/Nosotros/Imagen%20Institucional/Logotipo%20UVG/Logo%20UVG%20Altiplano/logo-uvg.altiplano-cuadrado-verde.jpg" rel="apple-touch-icon">
   <link rel="stylesheet" href="../../css/bootstrap.min.css">
   <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/scroll.css">
   <script src="../../js/jquery.js"></script>    
   <script src="../../js/popper.min.js"></script> 
+
   <link rel="stylesheet" type="text/css" href="main.css"><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap">
       <!-- CSS only -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
@@ -40,7 +44,7 @@
                               <!-- FORMS -->
 <div class="main">
 
-<div class="form_title title">
+<div class="form_title title" >
       <h1>Panel de administración</h1>
       <nav>
         <ol class="breadcrumb">
@@ -50,39 +54,51 @@
     </div>
 <!-- Tablas -->
   <h5 class="card-title">Tickets</h5>
+  <div style="   height: 80%; overflow-y: auto; overflow-x: scroll;">
 
-  <table class="table table-hover table-responsive-lg">
+  <table class="table table-hover table-responsive-lg" >
   <caption>Lista de tickets</caption>
     <thead class="thead-light">
       <tr>
         <th scope="col">ID</th>
         <th scope="col">Nombre</th>
         <th scope="col">Correo</th>
-        <th scope="col">Título</th>
+        <th scope="col">Titulo</th>
         <th scope="col">Descripción</th>
         <th scope="col">Fecha creación</th>
         <th scope="col">ID Ticket</th>
+        <th scope="col">Respuesta</th>
       </tr>
     </thead>
     <tbody>
-    <?php foreach ($listatickets as $registro){?>
-    <tr class="bg-light">
-        <td><?php echo $registro['Id']; ?></td>
-        <td><?php echo $registro['nombre']; ?><?php echo " "; ?><?php echo $registro['apellido']; ?></td>  
-        <td><?php echo $registro['correo']; ?></td>
-        <td><?php echo $registro['titulo']; ?></td>  
-        <td><?php echo $registro['descripcion']; ?></td> 
-        <td><?php echo $registro['creado']; ?></td>
-        <td><?php echo $registro['Idticket']; ?></td>
-    </tr>
-    <?php }; ?>
+    <?php    //CONSULTA DE DATOS 
+                      $sentencia= ("SELECT usuario.Id as Carnet, usuario.nombre as Nombre, usuario.apellido as Apellido, usuario.correo ,ticket.titulo as Titulo, ticket.descripcion as Descripcion, ticket.creado as Creado, ticket.Idticket, informacion.respuesta
+                      FROM usuario
+                      left JOIN ticket On usuario.Id=ticket.id_usuario
+                      left JOIN informacion On usuario.Id=informacion.usuario_id and ticket.Idticket = informacion.ID_ticket");
+                      $listaempleados = mysqli_query($conectar, $sentencia);
+                      foreach ($listaempleados as $registro){?>
+                        <tr class="bg-light">
+                            <td><?php echo $registro['Carnet']; ?></td>
+                            <td><?php echo $registro['Nombre']; ?> <br> <?php echo $registro['Apellido'];?></td>  
+                            <td><?php echo $registro['correo']; ?></td> 
+                            <td><?php echo $registro['Titulo']; ?></td>
+                            <td><?php echo $registro['Descripcion']; ?></td>
+                            <td><?php echo $registro['Creado']; ?></td>
+                            <td><?php echo $registro['Idticket']; ?></td>
+                            <td><?php echo $registro['respuesta']; ?></td>
+                        </tr>
+                        <?php }; 
+                    ?>
     </tbody>
   </table>
+
+  </div>
 </div>
   
 
 
-  <div class="switch switch__container">
+  <div class="switch switch__container" >
   <!-- General Form Elements -->
   <form class="form" action="" method="POST" enctype="multipart/form-data">
   <h2 class="form_title title">Respuesta tickets</h2>
