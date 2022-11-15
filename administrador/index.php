@@ -22,7 +22,7 @@
     <!-- CREAR CUENTA -->
     <div class="main">
       <div class="container a-container" id="a-container">
-        <form class="form" id="a-form" action="" method="POST">
+        <form class="form" id="a-form"  enctype="multipart/form-data" class="was-validated" action="" method="POST">
           <h2 class="form_title title">Iniciar sesión</h2>
           <h3 class="description">¡Bienvenido!</h3>
           <p>Por favor, ingresa tus credenciales</p>
