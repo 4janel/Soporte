@@ -16,7 +16,7 @@
     <!-- CREAR CUENTA -->
     <div class="main">
       <div class="container a-container" id="a-container">
-        <form class="form" id="a-form" action="" method="POST">
+        <form class="form" enctype="multipart/form-data" class="was-validated" id="a-form" action="" method="POST">
           <h2 class="form_title title">Únete</h2>
           <p>Regístrate a continuación</p>
           
@@ -57,7 +57,7 @@
       <!-- INICIAR SESSION -->
       <div class="container b-container" id="b-container">
         <form class="form" id="b-form"  action="" method="POST">
-          <h2 class="form_title title">Iniciar sesion</h2>
+          <h2 class="form_title title">Iniciar sesión</h2>
           <p>Por favor, ingresa tus credenciales</p>
           <span class="form__span">Carné</span>
           <input class="form__input <?php echo (isset($error['id']))?'is-invalid':"";?>" type="text" name="id" required value="<?php echo $id; ?>"  placeholder="Ingresa tu carné">
