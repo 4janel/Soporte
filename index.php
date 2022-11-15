@@ -16,7 +16,7 @@
     <!-- CREAR CUENTA -->
     <div class="main">
       <div class="container a-container" id="a-container">
-        <form class="form" enctype="multipart/form-data" class="was-validated" id="a-form" action="" method="POST">
+        <form class="form was-validated" enctype="multipart/form-data" id="a-form" action="" method="POST">
           <h2 class="form_title title">Únete</h2>
           <p>Regístrate a continuación</p>
           
