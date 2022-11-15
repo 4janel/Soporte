@@ -2,6 +2,8 @@
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
 <head>
+  <link href="https://res.cloudinary.com/webuvg/image/upload/f_auto,q_auto,w_164,c_scale,fl_lossy,dpr_2.63/f_auto,q_auto,fl_lossy,c_scale,w_200/v1641328051/WEB/Nosotros/Imagen%20Institucional/Logotipo%20UVG/Logo%20UVG%20Altiplano/logo-uvg.altiplano-cuadrado-verde.jpg" rel="icon">
+    <link href="https://res.cloudinary.com/webuvg/image/upload/f_auto,q_auto,w_164,c_scale,fl_lossy,dpr_2.63/f_auto,q_auto,fl_lossy,c_scale,w_200/v1641328051/WEB/Nosotros/Imagen%20Institucional/Logotipo%20UVG/Logo%20UVG%20Altiplano/logo-uvg.altiplano-cuadrado-verde.jpg" rel="apple-touch-icon">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
   <meta charset="utf-8">
