@@ -100,7 +100,7 @@
 
   <div class="switch switch__container" >
   <!-- General Form Elements -->
-  <form class="form" action="" method="POST" enctype="multipart/form-data">
+  <form class="form was-validated" enctype="multipart/form-data" action="" method="POST">
   <h2 class="form_title title">Respuesta tickets</h2>
 
     <div class="row mb-3">
