@@ -56,7 +56,7 @@
           $nr= mysqli_num_rows($query);
 
           if($nr==1){
-            echo '<script type="text/javascript"> window.location="../Soporte/mis-tickets/";</script>';
+            echo '<script type="text/javascript"> window.location="../mis-tickets/";</script>';
           }else{
             echo "<script>window.alert('Credenciales inválidos');</script>";
           }
