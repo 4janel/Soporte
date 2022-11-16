@@ -33,6 +33,38 @@
 </head>
 
 <body>
+<form action="" method="POST" enctype="multipart/form-data" class="was-validated">
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Para la confirmación de eliminación de ticket, ingrese Id ticket e Id info.</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                    <span class="form__span">Id ticket</span>
+                    <input class="form__input" type="text" class="form-control"  required  name="idticket" placeholder="Ingresa el Id ticket">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                    <span class="form__span">Id info</span>
+                    <input class="form__input" type="text" class="form-control"  required  name="idinfo" placeholder="Ingresa el Id info">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">    
+                <button class="button-cancel" type="submit" name="Eliminar" value="eliminar">Eliminar</button>                         
+            </div>
+            </div>
+        </div>
+        </div>
+      </form>
+
   <!-- ======= Encabezado ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
     <div class="d-flex align-items-center justify-content-between">
@@ -60,19 +92,21 @@
   <caption>Lista de tickets</caption>
     <thead class="thead-light">
       <tr>
-        <th scope="col">ID</th>
+        <th scope="col">Carné</th>
         <th scope="col">Nombre</th>
         <th scope="col">Correo</th>
         <th scope="col">Titulo</th>
         <th scope="col">Descripción</th>
         <th scope="col">Fecha creación</th>
         <th scope="col">ID Ticket</th>
+        <th scope="col">ID Info</th>
         <th scope="col">Respuesta</th>
+        <th scope="col">Eliminar</th>
       </tr>
     </thead>
     <tbody>
     <?php    //CONSULTA DE DATOS 
-                      $sentencia= ("SELECT usuario.Id as Carnet, usuario.nombre as Nombre, usuario.apellido as Apellido, usuario.correo ,ticket.titulo as Titulo, ticket.descripcion as Descripcion, ticket.creado as Creado, ticket.Idticket, informacion.respuesta
+                      $sentencia= ("SELECT usuario.Id as Carnet, usuario.nombre as Nombre, usuario.apellido as Apellido, usuario.correo ,ticket.titulo as Titulo, ticket.descripcion as Descripcion, ticket.creado as Creado, ticket.Idticket, informacion.Idinfo ,informacion.respuesta as respuesta
                       FROM usuario
                       left JOIN ticket On usuario.Id=ticket.id_usuario
                       left JOIN informacion On usuario.Id=informacion.usuario_id and ticket.Idticket = informacion.ID_ticket");
@@ -86,7 +120,13 @@
                             <td><?php echo $registro['Descripcion']; ?></td>
                             <td><?php echo $registro['Creado']; ?></td>
                             <td><?php echo $registro['Idticket']; ?></td>
+                            <td><?php echo $registro['Idinfo']; ?></td>
                             <td><?php echo $registro['respuesta']; ?></td>
+                            <td>
+                            <form action="" method="POST">
+                            <button type="button" class="button-cancel" data-bs-toggle="modal" data-bs-target="#exampleModal">Eliminar</button>
+                            </form>         
+                            </td>
                         </tr>
                         <?php }; 
                     ?>
@@ -100,7 +140,7 @@
 
   <div class="switch switch__container" >
   <!-- General Form Elements -->
-  <form class="form was-validated" enctype="multipart/form-data" action="" method="POST">
+  <form class="form" action="" method="POST" enctype="multipart/form-data">
   <h2 class="form_title title">Respuesta tickets</h2>
 
     <div class="row mb-3">
